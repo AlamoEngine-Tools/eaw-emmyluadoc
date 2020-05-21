@@ -152,9 +152,13 @@ end
 function GameObject.Get_Distance(target)
 end
 ---@public
+---@param target Position|GameObject|PlanetObject
+---@return CommandBlock
+---Orders the GameObject to move to the given target. Returns a CommandBlock is marked as finished when the GameObject has arrived at target
 function GameObject.Move_To(target)
 end
 ---@public
+---Despawns the GameObject
 function GameObject.Despawn()
 end
 ---@public
@@ -207,6 +211,38 @@ function GameObject.Event_Object_In_Range(callbackFunction, range)
 end
 ---@public
 function GameObject.Cancel_Event_Object_In_Range(callbackFunction)
+end
+---@public
+---@param new_owner PlayerObject The PlayerObject the ownership will be transfered to
+---Transfers ownership of a GameObject over to another Player
+function GameObject.Change_Owner(new_owner)
+end
+---@public
+---@param behavior_id int The ID of the behavior
+---@param enable boolean Enables the behavior if set to true. Disables it if it's false.
+---Enables or disables a behavior defined in the XML entry of the GameObject
+function GameObject.Enable_Behavior(behavior_id, enable)
+end
+---@public
+---@return GameObject Returns the parent object of the given GameObject. In galactic conquest this will return either a planet, a company or a container. In tactical mode it returns the squadron for single fighters.
+function GameObject.Get_Parent_Object()
+end
+---@public
+---@return PlanetObject
+---Returns the Planet the GameObject is located on. Can be nil if the GameObject is in Hyperspace
+function GameObject.Get_Planet_Location()
+end
+---@public
+---@param hidden boolean Determines whether the GameObject is visible or invisible
+---Makes the GameObject visible or invisible
+function GameObject.Hide(hidden)
+end
+---@public
+---@param animation_name string The name of the animation
+---@param should_repeat boolean Determines whether the animation gets repeated
+---@param num number
+---Plays an animation on a GameObject. The animation must be present in the 3D model
+function GameObject.Play_Animation(animation_name, should_repeat, num)
 end
 
 ---@class Position
@@ -278,6 +314,22 @@ end
 ---@public
 function GameScoringType.Get_Build_Cost()
 end
+
+---@class CommandBlock
+local CommandBlock = {}
+
+---@public
+---@return table
+---Returns the result of the CommandBlock
+function CommandBlock.Result()
+end
+
+---@public
+---@return boolean
+---Returns a boolean indicating whether the CommandBlock has finished its command
+function CommandBlock.IsFinished()
+end
+
 
 ---@public
 ---Finds the game object that currently attacks the given game object and deals the highest damage.

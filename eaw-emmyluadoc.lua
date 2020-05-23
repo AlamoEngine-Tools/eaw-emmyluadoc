@@ -331,16 +331,16 @@ end
 function Find_All_Objects_With_Hint(hint)
 end
 ---@public
---- Returns the nearest object that has the given properties. May return nil.
----@overload fun(gameObject:GameObject|TaskForce, typeNameOrPlayerOrProperty:string) The two argument version takes as second parameter an object type name.
----@overload fun(gameObject:GameObject|TaskForce, typeNameOrPlayerOrProperty:PlayerObject, isFriendlyOrPlayer:boolean) With three arguments the second argument is a player wrapper, the third a boolean defining if the found unit should be a friendly or an enemy.
----@overload fun(gameObject:GameObject|TaskForce, typeNameOrPlayerOrProperty:string, isFriendlyOrPlayer:PlayerObject, isFriendly:boolean) The four argument version takes a property flag string, a player wrapper and a boolean defining if the found unit should be a friendly or an enemy.
+--- Returns the nearest object that has the given properties. May return nil. The two argument version takes as second parameter an object type name. The four argument version takes as second parameter a property flag string. The `isFriendly`parameter filters for friendlies or enemies, respectively.
+---@overload fun(gameObject:GameObject|TaskForce, typeNameOrProperty:string)
+---@overload fun(gameObject:GameObject|TaskForce, player:PlayerObject, isFriendly:boolean)
+---@overload fun(gameObject:GameObject|TaskForce, typeNameOrProperty:string, player:PlayerObject, isFriendly:boolean)
 ---@param gameObject GameObject|TaskForce
----@param typeNameOrPlayerOrProperty string|PlayerObject
----@param isFriendlyOrPlayer boolean|PlayerObject
+---@param typeNameOrProperty string
+---@param player PlayerObject
 ---@param isFriendly boolean
 ---@return GameObject
-function Find_Nearest(gameObject, typeNameOrPlayerOrProperty, isFriendlyOrPlayer, isFriendly)
+function Find_Nearest(gameObject, typeNameOrProperty, player, isFriendly)
 end
 ---@public
 ---@param gameObject GameObject|TaskForce

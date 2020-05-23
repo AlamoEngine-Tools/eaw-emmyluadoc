@@ -376,10 +376,17 @@ end
 ---@return table<number, PlanetObject>
 function Find_Path(player, startingPlanet, destinationPlanet)
 end
+
+---@type table|fun(planetName:string):PlanetObject
 ---@public
+--- Can be called directly with a planet name or can be indexed to call the function `Get_All_Planets`.
 ---@param planetName string
 ---@return PlanetObject
-function FindPlanet(planetName)
+FindPlanet = {}
+---@public
+--- Returns all planets in the current GC game.
+---@return PlanetObject[]
+function FindPlanet.Get_All_Planets()
 end
 ---@public
 --- Returns all planets in the current GC game.

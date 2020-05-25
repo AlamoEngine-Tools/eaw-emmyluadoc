@@ -252,6 +252,7 @@ end
 function PlayerObject.Is_Enemy(playerObject)
 end
 ---@public
+---@param amount number
 function PlayerObject.Give_Money(amount)
 end
 ---@public
@@ -279,11 +280,118 @@ end
 function GameScoringType.Get_Build_Cost()
 end
 
+
+--//////////////////////////////////////////////////////////////////////////////
+-- Finders as sorted by SGMG documentation
+--//////////////////////////////////////////////////////////////////////////////
 ---@public
 ---Finds the game object that currently attacks the given game object and deals the highest damage.
----@param gameObject GameObject
+---@param gameObject GameObject|TaskForce
 ---@return GameObject
 function FindDeadlyEnemy(gameObject)
+end
+---@public
+--- Returns a PlayerWrapper object
+---@param factionName string
+---@return PlayerObject
+function Find_Player(factionName)
+end
+---@public
+--- Returns a GameObjectTypeWrapper object
+---@param typeName string
+---@return GameObjectType
+function Find_Object_Type(typeName)
+end
+---@public
+--- Literally finds all objects of this type. That may include projectiles or other unexpected objects. Categories can be piped together (e.g. "Frigate | Capital")
+---@overload fun(propertyOrPlayer:string)
+---@overload fun(propertyOrPlayer:string, playerOrCategory:PlayerObject)
+---@overload fun(propertyOrPlayer:PlayerObject, playerOrCategory:string)
+---@param propertyOrPlayer string|PlayerObject A property flag if used with a single parameter or with a player wrapper as second parameter
+---@param playerOrCategory PlayerObject|string A player wrapper if the first parameter is a property flag, otherwise a category mask
+---@return table<number, GameObject>
+function Find_All_Objects_Of_Type(propertyOrPlayer, playerOrCategory)
+end
+---@public
+--- Returns the first object of the given type. Possibly finds objects in reverse spawn order.
+---@param typeName string
+---@return GameObject
+function Find_First_Object(typeName)
+end
+---@public
+--- Find an object with a given hint.
+---@param typeName string The name of the object type
+---@param hint string The object hint as set in the map editor.
+---@return GameObject
+function Find_Hint(typeName, hint)
+end
+---@public
+---@param hint string The object hint as set in the map editor.
+---@return table<number, GameObject>
+function Find_All_Objects_With_Hint(hint)
+end
+---@public
+--- Returns the nearest object that has the given properties. May return nil. The two argument version takes as second parameter an object type name. The four argument version takes as second parameter a property flag string. The `isFriendly`parameter filters for friendlies or enemies, respectively.
+---@overload fun(gameObject:GameObject|TaskForce, typeNameOrProperty:string)
+---@overload fun(gameObject:GameObject|TaskForce, player:PlayerObject, isFriendly:boolean)
+---@overload fun(gameObject:GameObject|TaskForce, typeNameOrProperty:string, player:PlayerObject, isFriendly:boolean)
+---@param gameObject GameObject|TaskForce
+---@param typeNameOrProperty string
+---@param player PlayerObject
+---@param isFriendly boolean
+---@return GameObject
+function Find_Nearest(gameObject, typeNameOrProperty, player, isFriendly)
+end
+---@public
+---@param gameObject GameObject|TaskForce
+---@param spaceFieldType string Can be "Asteroid", "Nebula" or "Ion_Storm".
+---@return GameObject
+function Find_Nearest_Space_Field(gameObject, spaceFieldType)
+end
+---@public
+--- Returns position and combined threat of units (from the unit list) in range of the position.
+---@param unitList table<number, GameObject>
+---@param distance number
+---@return Position
+function Find_Best_Local_Threat_Center(unitList, distance)
+end
+---@public
+---@param gameObject GameObject
+---@param player PlayerObject
+---@return Position
+function Get_Most_Defended_Position(gameObject, player)
+end
+---@public
+---Returns a position outside the range of the object that is given as first parameter.
+---@param enemyObject GameObject The object whose weapon range is considered
+---@param gameObject GameObject|TaskForce The object or task force looking to flee outside the range of the first object.
+---@return Position
+function Project_By_Unit_Range(enemyObject, gameObject)
+end
+---@public
+--- GC only. Only for AI players. Returns a list of planet objects.
+---@param player PlayerObject
+---@param startingPlanet PlanetObject
+---@param destinationPlanet PlanetObject
+---@return table<number, PlanetObject>
+function Find_Path(player, startingPlanet, destinationPlanet)
+end
+
+---@type table|fun(planetName:string):PlanetObject
+---@public
+--- Can be called directly with a planet name or can be indexed to call the function `Get_All_Planets`.
+---@param planetName string
+---@return PlanetObject
+FindPlanet = {}
+---@public
+--- Returns all planets in the current GC game.
+---@return PlanetObject[]
+function FindPlanet.Get_All_Planets()
+end
+---@public
+--- Returns all planets in the current GC game.
+---@return table<number, PlanetObject>
+function FindPlanet.Get_All_Planets()
 end
 
 return TaskForce, GameObject, GameObjectType, PlayerObject, Position, PlanetObject, GameScoringType

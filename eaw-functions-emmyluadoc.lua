@@ -176,3 +176,25 @@ end
 ---@return GameObject The spawned weapon
 function Spawn_Special_Weapon(type_name, player)
 end
+
+-- -----------------------------------------------------------
+-- ------------------------ Game time ------------------------
+-- -----------------------------------------------------------
+
+--- Returns game time of the current game mode in seconds if called. Can be indexed for additional functions.
+---
+---@type fun():number
+---@public
+---@return number
+GetCurrentTime = {}
+
+---@public
+--- The current frame
+---@return number
+function GetCurrentTime.Frame()
+end
+
+---@public
+---@return number
+function GetCurrentTime.Galactic_Time()
+end

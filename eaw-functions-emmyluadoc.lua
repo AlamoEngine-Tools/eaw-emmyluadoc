@@ -132,7 +132,7 @@ end
 -- ------------------------------------------------------------------
 
 ---@public
----Spawns a unit and returns a table containing only the unit
+---Spawns a unit and returns a table containing only the unit. Respects collision. If something blocks the spawn, the unit will be spawned as close as possible to the given position.
 ---@param unit_type GameObjectType The type of the unit
 ---@param location PlanetObject|GameObject|Position The location the unit is supposed to spawn at
 ---@param owner PlayerObject The owner of the unit
@@ -149,4 +149,30 @@ end
 ---@return CommandBlock
 ---Returns a CommandBlock with a table containing the spawned unit
 function Reinforce_Unit(object_type, location, player, allow_ai_usage, ignore_reinforcement_rules)
+end
+
+---@public
+--- Spawns an object without regard for collision.
+---@param object_type GameObjectType|string Object type or type xml name
+---@param position Position A game object is also possible but can cause script crashes
+---@param player PlayerObject
+---@return GameObject The spawned object
+function Create_Generic_Object(object_type, position, player)
+end
+
+---@public
+--- Spawns a unit from the reinforcement pool without hyperspace animation while respecting collision. Returns a list containing the spawned object. If the required unit is not in the reinforcement pool, it does nothing. The unit faces toward the center of the map.
+---@param object_type GameObjectType
+---@param position Position|GameObject
+---@param player PlayerObject
+---@return GameObject[]
+function Spawn_From_Reinforcement_Pool(object_type, position, player)
+end
+
+---@public
+--- Space only. Spawns a ground to space weapon for the given player and returns it. Can be fired using `Fire_Special_Weapon` but is not available to the player.
+---@param type_name string
+---@param player PlayerObject
+---@return GameObject The spawned weapon
+function Spawn_Special_Weapon(type_name, player)
 end

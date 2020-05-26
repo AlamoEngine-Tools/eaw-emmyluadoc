@@ -198,3 +198,34 @@ end
 ---@return number
 function GetCurrentTime.Galactic_Time()
 end
+
+-- ---------------------------------------------------------------
+-- ------------------------ Randomization ------------------------
+-- ---------------------------------------------------------------
+
+--- Returns a random integer between the given integers when called (uses game time as seed). 
+--- Can be indexed to access further functions.
+---
+---@type fun(lower:number, upper:number):number
+---@public
+---@param lower number
+---@param upper number
+---@return number
+GameRandom = {}
+
+---@public
+--- Returns a random float between the given bounds or between zero and one if no bounds are given.
+---@overload fun():number
+---@param lower number
+---@param upper number
+---@return number
+function GameRandom.Get_Float(lower, upper)
+end
+
+---@public
+--- Returns a random integer within the given bounds (uses real time or some other game independent value as seed).
+---@param lower number
+---@param upper number
+---@return number
+function GameRandom.Free_Random(lower, upper)
+end

@@ -229,3 +229,219 @@ end
 ---@return number
 function GameRandom.Free_Random(lower, upper)
 end
+
+-- -----------------------------------------------------------------------
+-- ------------------------ Camera and Cinematics ------------------------
+-- -----------------------------------------------------------------------
+
+---@public
+--- Teleports all units of the given player capable of retreating into retreat position and starts the retreat. 
+--- The actual hyperspace jump is executed only after the given delay. This neither starts a countdown nor does it end the battle.
+---@param playerID number
+---@param delay number
+function Start_Cinematic_Space_Retreat(playerID, delay)
+end
+
+---@public
+--- Ends the automatic cinematic camera.
+function End_Cinematic_Mode()
+end
+
+---@public
+--- Starts the automatic cinematic camera.
+function Start_Cinematic_Mode()
+end
+
+---@public
+--- Used in campaign openings to have a cinematic space scene when a ground map is loaded.
+---@param on boolean
+function Set_Cinematic_Environment(on)
+end
+
+---@public
+--- Used in campaign openings to have a cinematic space scene when a ground map is loaded.
+---@param object GameObject
+function Promote_To_Space_Cinematic_Layer(object)
+end
+
+---@public
+---@param type_name string
+---@param player_id number
+---@param transport_pos GameObject|Position
+---@param zangle number
+---@param phase_mode number Landing = 1, Unloading = 2, Leaving = 3
+---@param anim_delta number
+---@param idle_time number
+---@param persist number
+---@param hint any Unknown
+---@return GameObject The spawned transport
+function Create_Cinematic_Transport(type_name, player_id, transport_pos, zangle, phase_mode, anim_delta, idle_time, persist, hint)
+end
+
+---@public
+--- Zooms the cinematic camera in or out.
+---@param transition_time number The time that the transition to the zoomed state takes
+---@param magnification number Greater than 1 zooms out, less than 1 zooms in
+function Cinematic_Zoom(transition_time, magnification)
+end
+
+---@public
+--- Transition from the cinematic camera back to the tactical view.
+---@param time number
+function Transition_To_Tactical_Camera(time)
+end
+
+---@public
+--- Transition the camera position to a new position. The position new is determined as an offset from some reference position.
+---@param position GameObject|Position A reference position for the coordinate parameters
+---@param transition_time number
+---@param x_offset number Offset from the given position in x direction, or the distance to the given position depending on the following parameter
+---@param y_offset number Offset from the given position in y direction, or pitch depending on the following parameter
+---@param z_offset number Offset from the given position in y direction, or yaw depending on the following parameter
+---@param euler_angles number Sets the previous parameters to cartesian coordinates (0), or spherical coordinates (1)
+---@param attach_object GameObject|number A game object to attach the camera to. The camera will move with the object. Set to 0 to use no object
+---@param use_object_orientation number Sets orientation of the used coordinate system to default (0) as seen in the map editor or to the orientation of the given object
+---@param cinematic_animation number Play the given objects cinematic animation (1) or not (0)
+function Transition_Cinematic_Camera_Key(position, transition_time, x_offset, y_offset, z_offset, euler_angles, attach_object, use_object_orientation, cinematic_animation)
+end
+
+---@public
+--- Set the camera position. The position is determined as an offset from some reference position.
+---@param position GameObject|Position A reference position for the coordinate parameters
+---@param x_offset number Offset from the given position in x direction, or the distance to the given position depending on the following parameter
+---@param y_offset number Offset from the given position in y direction, or pitch depending on the following parameter
+---@param z_offset number Offset from the given position in y direction, or yaw depending on the following parameter
+---@param euler_angles number Sets the previous parameters to cartesian coordinates (0), or spherical coordinates (1)
+---@param attach_object GameObject|number A game object to attach the camera to. The camera will move with the object. Set to 0 to use no object
+---@param use_object_orientation number Sets orientation of the used coordinate system to default (0) as seen in the map editor or to the orientation of the given object
+---@param cinematic_animation number Play the given objects cinematic animation (1) or not (0)
+function Set_Cinematic_Camera_Key(position, x_offset, y_offset, z_offset, euler_angles, attach_object, use_object_orientation, cinematic_animation)
+end
+
+---@public
+--- Transition the camera target to a new position. The new position is determined as an offset from some reference position.
+---@param position GameObject|Position A reference position for the coordinate parameters
+---@param transition_time number
+---@param x_offset number Offset from the given position in x direction, or the distance to the given position depending on the following parameter
+---@param y_offset number Offset from the given position in y direction, or pitch depending on the following parameter
+---@param z_offset number Offset from the given position in y direction, or yaw depending on the following parameter
+---@param euler_angles number Sets the previous parameters to cartesian coordinates (0), or spherical coordinates (1)
+---@param attach_object GameObject|number A game object to attach the camera to. The camera will move with the object. Set to 0 to use no object
+---@param use_object_orientation number Sets orientation of the used coordinate system to default (0) as seen in the map editor or to the orientation of the given object
+---@param cinematic_animation number Play the given objects cinematic animation (1) or not (0)
+function Transition_Cinematic_Target_Key(position, transition_time, x_offset, y_offset, z_offset, euler_angles, attach_object, use_object_orientation, cinematic_animation)
+end
+
+---@public
+--- Set the camera target. The target position is determined as an offset from some reference position.
+---@param position GameObject|Position A reference position for the coordinate parameters
+---@param x_offset number Offset from the given position in x direction, or the distance to the given position depending on the following parameter
+---@param y_offset number Offset from the given position in y direction, or pitch depending on the following parameter
+---@param z_offset number Offset from the given position in y direction, or yaw depending on the following parameter
+---@param euler_angles number Sets the previous parameters to cartesian coordinates (0), or spherical coordinates (1)
+---@param attach_object GameObject|number A game object to attach the camera to. The camera will move with the object. Set to 0 to use no object
+---@param use_object_orientation number Sets orientation of the used coordinate system to default (0) as seen in the map editor or to the orientation of the given object
+---@param cinematic_animation number Play the given objects cinematic animation (1) or not (0)
+--- Set a target position for the camera to point at. If W is given, the camera will follow its movements. Without W the parameters R and S(?) won't work. If R is 1, the function uses W's coordinate system.
+function Set_Cinematic_Target_Key(position, x_offset, y_offset, z_offset, euler_angles, attach_object, use_object_orientation, cinematic_animation)
+end
+
+---@public
+--- End the cinematic camera and enable the command bar again.
+function End_Cinematic_Camera()
+end
+
+---@public
+--- Start the cinematic camera disabling the command bar.
+---@param unknown boolean Default is true
+function Start_Cinematic_Camera(unknown)
+end
+
+---@public
+--- Point the camera to the given position. Can be used during camera sequences but only affects the tactical camera.
+---@param position GameObject|Position
+function Point_Camera_At(position)
+end
+
+---@public
+--- Rotate the camera to the given angle. Takes the shortest direction. Can be used during camera sequences, but 
+--- only affects the tactical camera.
+---@param z_angle number The angle around the z axis giving the new orientation
+---@param transition_time number The duration of the transition
+function Rotate_Camera_To(z_angle, transition_time)
+end
+
+---@public
+--- Rotates the camera around the z axis by the given amount of degrees. The sign of the angle determines the direction of the rotation. The rotation takes the given amount of time. 
+---@param z_angle number
+---@param transition_time number
+function Rotate_Camera_By(z_angle, transition_time)
+end
+
+---@public
+--- Zoom in the tactical camera either immediately or with a short transition.
+---@param zoom number Float between 0 (zoomed in) and 1 (zoomed out)
+---@param immediate number Set the zoom immediately (1) or use a short transition (0)
+function Zoom_Camera(zoom, immediate)
+end
+
+---@public
+--- Function and parameters unknown.
+function Camera_To_Follow(...)
+end
+
+---@public
+--- Scroll the tactical camera to the given position.
+---@param position GameObject|Position
+function Scroll_Camera_To(position)
+end
+
+---@public
+--- Fade screen into blackness.
+---@param time number
+function Fade_Screen_Out(time)
+end
+
+---@public
+--- Fade screen back in from blackness
+---@param time number
+function Fade_Screen_In(time)
+end
+
+---@public
+--- Turn off blackness from fade
+function Fade_Off()
+end
+
+---@public
+--- Make screen black immediately
+function Fade_On()
+end
+
+---@public
+--- Move black bars at the top and bottom out of the screen
+---@param time number
+function Letter_Box_Out(time)
+end
+
+---@public
+--- Move black bars at the top and bottom into the screen
+---@param time number
+function Letter_Box_In(time)
+end
+
+---@public
+--- Get rid of black bars immediately
+function Letter_Box_Off()
+end
+
+---@public
+--- Show black bars immediately
+function Letter_Box_On()
+end
+
+---@public
+--- Hides and disables all units not marked by In_End_Cinematic. Ignores space stations and structures.
+function Do_End_Cinematic_Cleanup()
+end
+

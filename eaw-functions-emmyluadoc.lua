@@ -445,3 +445,104 @@ end
 function Do_End_Cinematic_Cleanup()
 end
 
+---@public
+--- Pause/unpause weather audio.
+---@param pause boolean
+function Weather_Audio_Pause(pause)
+end
+
+---@public
+---@param allow boolean
+function Allow_Localized_SFX(allow)
+end
+
+---@type SFXManagerClass
+SFXManager = {}
+
+---@public
+---@param allow boolean
+function SFXManager.Allow_Ambient_VO(allow)
+end
+
+---@public
+---@param allow boolean
+function SFXManager.Allow_Enemy_Sighted_VO(allow)
+end
+
+---@public
+---@param allow boolean
+function SFXManager.Allow_HUD_VO(allow)
+end
+
+---@public
+--- Spelling mistake!
+---@param allow boolean
+function SFXManager.Allow_Unit_Reponse_VO(allow)
+end
+
+---@public
+---@param allow boolean
+function SFXManager.Allow_Localized_SFXEvents(allow)
+end
+
+---@public
+--- Removes screen texts
+function Remove_All_Text()
+end
+
+---@public
+function Stop_All_Speech()
+end
+
+---@public
+function Resume_Mode_Based_Music()
+end
+
+---@public
+function Stop_All_Music()
+end
+
+---@public
+--- Plays a music event defined in MusicEvents.xml
+---@param music_event string
+function Play_Music(music_event)
+end
+
+---@public
+function Stop_Bink_Movie()
+end
+
+---@public
+--- Plays a movie defined in Movies.xml
+---@param movie_name string
+function Play_Bink_Movie(movie_name)
+end
+
+---@public
+---@param environment number Integer
+function Set_New_Environment(environment)
+end
+
+---@public
+--- Turn on weather effects
+function Force_Weather()
+end
+
+---@public
+---@param enable boolean
+function Enable_Distance_Fog(enable)
+end
+
+---@public
+---@param enable boolean
+function Enable_Fog(enable)
+end
+
+---@public
+--- Plays a lightning effect between the given positions for a time.
+---@param effect string
+---@param position1 Position|GameObject
+---@param position2 Position|GameObject
+---@return CommandBlock
+function Play_Lightning_Effect(effect, position1, position2)
+end

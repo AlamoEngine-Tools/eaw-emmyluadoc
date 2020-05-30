@@ -917,3 +917,96 @@ local FowRevealClass = {}
 --- Undo a reveal.
 function FowRevealClass.Undo_Reveal()
 end
+
+-- ---------------------------------------------------------------------
+-- ------------------------ Story functionality ------------------------
+-- ---------------------------------------------------------------------
+
+---@public
+--- Trigger a STORY_AI_NOTIFICATION event with the given identifier.
+---@overload fun(identifier:string)
+---@param identifier string
+---@param unknownArgument GameObject
+function Story_Event(identifier, unknownArgument)
+end
+
+---@public
+--- Checks if corresponding reward type TRIGGER_AI has fired.
+---@param player PlayerObject
+---@param identifier string
+---@param gameObject GameObject|nil
+---@param bool boolean
+---@return boolean
+function Check_Story_Flag(player, identifier, gameObject, bool)
+end
+
+---@public
+--- Returns the story file as StoryPlotWrapper object. The parameter is case sensitive.
+---@param file_name string 
+---@return StoryPlotWrapper
+function Get_Story_Plot(file_name)
+end
+
+---@class StoryPlotWrapper
+local StoryPlotWrapper = {}
+
+---@public
+--- Finds an Xml event from the plot and returns it.
+---@param event_name string
+---@return StoryEventWrapper
+function StoryPlotWrapper.Get_Event(event_name)
+end
+
+---@public
+--- Suspends the plot.
+function StoryPlotWrapper.Suspend()
+end
+
+---@public
+--- Activates the plot
+function StoryPlotWrapper.Activate()
+end
+
+---@public
+--- Resets all events of the plot.
+function StoryPlotWrapper.Reset()
+end
+
+---@class StoryEventWrapper
+local StoryEventWrapper = {}
+
+---@public
+--- Sets the event's reward type.
+---@param reward_type string
+function StoryEventWrapper.Set_Reward_Type(reward_type)
+end
+
+---@public
+--- Sets a reward parameter. The index starts counting at zero which corresponds to <Reward_Param1>.
+---@param parameter_index number
+---@param value any
+function StoryEventWrapper.Set_Reward_Parameter(parameter_index, value)
+end
+
+---@public
+--- Sets an event parameter. The index starts counting at zero which corresponds to <Event_Param1>.
+---@param parameter_index number
+---@param value any
+function StoryEventWrapper.Set_Event_Parameter(parameter_index, value)
+end
+
+---@public
+--- Sets the dialog file.
+---@param dialog_file_name string
+function StoryEventWrapper.Set_Dialog(dialog_file_name)
+end
+
+---@public
+function StoryEventWrapper.Clear_Dialog_Text()
+end
+
+---@public
+--- The text will be formatted with any additional parameters given.
+---@param text_identifier string
+function StoryEventWrapper.Add_Dialog_Text(text_identifier, ...)
+end

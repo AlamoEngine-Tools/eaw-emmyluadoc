@@ -775,3 +775,145 @@ end
 ---@return GameObjectType
 function GetNextStarbaseType(planet)
 end
+
+-- ----------------------------------------------------------------
+-- ------------------------ Multithreading ------------------------
+-- ----------------------------------------------------------------
+
+---@public
+--- Starts the given function in a new thread on the next frame with the given parameter and returns the thread ID (an integer). If the parameter is a table, its contents will be copied into a new list which is given to the function, the keys of the original table will be lost.
+---@param function_name string
+---@param parameter any
+---@return number Thread ID
+function Create_Thread(function_name, parameter)
+end
+
+
+Thread = {}
+
+---@public
+--- Starts the given function in a new thread on the next frame with the given parameter and returns the thread ID (an integer). If the parameter is a table, its contents will be copied into a new list which is given to the function, the keys of the original table will be lost.
+---@param function_name string
+---@param parameter any
+---@return number Thread ID
+function Thread.Create(function_name, parameter)
+end
+
+---@public
+--- Stops the thread with the given ID
+---@param thread_id number
+function Thread.Kill(thread_id)
+end
+
+---@public
+function Thread.Kill_All()
+end
+
+---@public
+---@param thread_id number
+function Thread.Is_Thread_Active(thread_id)
+end
+
+---@public
+--- Returns the name of the main function ("main" or the function name passed to Create_Thread).
+---@param thread_id number
+function Thread.Get_Name(thread_id)
+end
+
+---@public
+--- Returns the ID of the current thread.
+function Thread.Get_Current_ID()
+end
+
+
+-- --------------------------------------------------------
+-- ------------------------ Values ------------------------
+-- --------------------------------------------------------
+
+GlobalValue = {}
+
+---@public
+--- Get the value for the given name.
+---@param name string
+---@return any
+function GlobalValue.Get(name)
+end
+
+---@public
+--- Set a value for the given name. This value is accessible for all lua scripts and can be any variable type except userdata or thread. Can theoretically still be used to access userdata from other scripts, however the game throws an error in that case.
+---@param name string
+---@param value any
+function GlobalValue.Set(name, value)
+end
+
+--- Get the value set for the given name. Can be indexed for further functions.
+---
+---@type fun(name:string):any
+---@public
+---@param name string
+---@return any
+ThreadValue = {}
+
+---@public
+--- Get the value set for the given name.
+---@param name string
+---@return any
+function ThreadValue.Get(name)
+end
+
+---@public
+--- Set a value for the given identifier. This value is specific to a thread as defined by Create_Thread.
+---@param name string
+---@param value any
+function ThreadValue.Set(name, value)
+end
+
+---@public
+--- Sets value for the given name to nil.
+---@param name string
+function ThreadValue.Reset(name)
+end
+
+
+-- ------------------------------------------------------------
+-- ------------------------ Fog of War ------------------------
+-- ------------------------------------------------------------
+
+FogOfWar = {}
+
+---@public
+--- Reveals the entire map for a player. Can be undone using the return value.
+---@param player PlayerObject
+---@return FowRevealClass
+function FogOfWar.Reveal_All(player)
+end
+
+---@public
+--- Reveals FoW in a radius aroung the given position for a player. The return value can be used to undo the reveal.
+---@param player PlayerObject
+---@param position Position
+---@param radius number
+---@return FowRevealClass
+function FogOfWar.Reveal(player, position, radius)
+end
+
+---@public
+--- Reveals FoW in a radius aroung the given position for a player for about 5 seconds.
+---@param player PlayerObject
+---@param position Position
+---@param radius number
+function FogOfWar.Temporary_Reveal(player, position, radius)
+end
+
+---@public
+---@param disable boolean
+function FogOfWar.Disable_Rendering(disable)
+end
+
+---@class FowRevealClass
+local FowRevealClass = {}
+
+---@public
+--- Undo a reveal.
+function FowRevealClass.Undo_Reveal()
+end

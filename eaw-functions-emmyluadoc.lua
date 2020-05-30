@@ -546,3 +546,232 @@ end
 ---@return CommandBlock
 function Play_Lightning_Effect(effect, position1, position2)
 end
+
+
+-- -------------------------------------------------------------------------
+-- ------------------------ Miscellaneous Functions ------------------------
+-- -------------------------------------------------------------------------
+
+--- Used to run event handlers like `Default_Space_Conflict_Begin`. Returns an event handler function to be called or nil.
+---
+---@type function|table
+---@public
+---@return function|nil
+GetEvent = {}
+
+---@public
+--- Returns a list with parameters for the function call returned by GetEvent()
+---@return table
+function GetEvent.Params()
+end
+
+---@public
+--- Clear out any thread events
+function GetEvent.Reset()
+end
+
+---@public
+--- Returns the call stacks for all threads of this lua script.
+---@return string
+function DumpCallStack()
+end
+
+---@public
+--- Seems to be equivalent to Thread.Get_Current_ID()
+---@return number The current thread ID, an integer
+function GetThreadID()
+end
+
+---@public
+--- Prints to _LogFile.txt. Contains a spelling mistake.
+---@param out_string string
+function _OuputDebug(out_string)
+end
+
+---@public
+--- Trigger a message popup window
+---@param out_string string
+function _MessagePopup(out_string)
+end
+
+---@public
+--- Print to the given file.
+---@param file_name string Just a filename, no path
+---@param out_string string
+function _CustomScriptMessage(file_name, out_string)
+end
+
+---@public
+--- Prints to the AILog if it is enabled
+---@param out_string string
+function _ScriptMessage(out_string)
+end
+
+---@public
+--- Sets a flag for the engine to terminate the script. The script will not be killed immediately, only after the next yield.
+function _ScriptExit()
+end
+
+---@public
+---@param string1 string
+---@param string2 string
+---@return boolean
+function StringCompare(string1, string2)
+end
+
+---@public
+--- Is this a multiplayer game?
+---@return boolean
+function Is_Multiplayer_Mode()
+end
+
+---@public
+--- Returns "Land", "Space" or "Galactic"
+---@return string
+function Get_Game_Mode()
+end
+
+---@public
+--- True for GC games
+---@return boolean
+function Is_Campaign_Game()
+end
+
+---@public
+--- (Un)Lock all player controls
+---@param lock number Integer to denote true(1) or false(0)
+function Lock_Controls(lock)
+end
+
+---@public
+--- Disable or enable all AIs
+---@param suspend number Integer to denote true(1) or false(0)
+function Suspend_AI(suspend)
+end
+
+---@public
+--- Stops fast forward
+function Cancel_Fast_Forward()
+end
+
+---@public
+--- In tactical missions when reward parameter 9 of LINK_TACTICAL is set to 2, this will trigger the arrival of the attacking fleet. Should be called before the player is given control.
+function Resume_Hyperspace_In()
+end
+
+---@public
+--- Displays the text entry as a droid advisor hint
+---@param text_string string Text identifier from dat file
+function Game_Message(text_string)
+end
+
+---@public
+--- For info_section == true the objective is added under the heading "Battle Information", otherwise it is added under the heading "Mission Objectives"
+---@param text_string string Text identifier from dat file
+---@param info_section boolean Add objective as "Battle Information" or as "Mission Objective"
+function Add_Objective(text_string, info_section)
+end
+
+---@public
+---@param identifier string
+function Remove_Planet_Highlight(identifier)
+end
+
+---@public
+---@param planet GameObject
+---@param identifier string
+function Add_Planet_Highlight(planet, identifier)
+end
+
+---@public
+--- Removes the radar blip identified by the given string.
+---@param identifier string
+function Remove_Radar_Blip(identifier)
+end
+
+---@public
+--- Add a radar blip on the given object with an identifier for removal.
+---@param game_object GameObject
+---@param identifier string
+function Add_Radar_Blip(game_object, identifier)
+end
+
+---@public
+---@param object GameObject
+---@param hide number
+---@param sub_object_name string
+function Hide_Sub_Object(object, hide, sub_object_name)
+end
+
+---@public
+---@param object GameObject
+---@param hide number
+function Hide_Object(object, hide)
+end
+
+---@public
+--- Assembles the passed objects into a fleet and returns the fleet object.
+---@param object_list GameObject[]
+---@return GameObject
+function Assemble_Fleet(object_list)
+end
+
+---@public
+---@param position GameObject|Position
+---@return boolean
+function Is_Point_In_Asteroid_Field(position)
+end
+
+---@public
+---@param position GameObject|Position
+---@return boolean
+function Is_Point_In_Ion_Storm(position)
+end
+
+---@public
+---@param position GameObject|Position
+---@return boolean
+function Is_Point_In_Nebula(position)
+end
+
+---@public
+--- Only valid in land mode.
+---@overload fun(position1, position2):boolean
+---@param position1 position
+---@param position2  position
+---@param player PlayerObject
+---@param unknown boolean
+---@return boolean
+function Are_On_Opposite_Sides_Of_Shield(position1, position2, player, unknown)
+end
+
+---@public
+--- Triggers the retry dialog that allows the player to restart the mission or quit.
+function Activate_Retry_Dialog()
+end
+
+---@public
+---@param planet PlanetObject
+---@param level number
+---@return CommandBlock
+function WaitForStarbase(planet, level)
+end
+
+---@public
+---@param planet PlanetObject
+---@param level number
+---@return CommandBlock
+function WaitForGroundbase(planet, level)
+end
+
+---@public
+---@param planet PlanetObject
+---@return GameObjectType
+function GetNextGroundbaseType(planet)
+end
+
+---@public
+---@param planet PlanetObject
+---@return GameObjectType
+function GetNextStarbaseType(planet)
+end

@@ -1010,3 +1010,96 @@ end
 ---@param text_identifier string
 function StoryEventWrapper.Add_Dialog_Text(text_identifier, ...)
 end
+
+-- ----------------------------------------------------------------------
+-- ------------------------ AI related functions ------------------------
+-- ----------------------------------------------------------------------
+
+---@class MarkupBlockStatus
+
+---@public
+--- For tactical battle. Evaluates the perception at GC level.
+---@param perception string
+---@return number
+function Evaluate_In_Galactic_Context(perception)
+end
+---@public
+---@param player PlayerObject
+---@param path PlanetObject[]
+---@param number number
+---@param unknown MarkupBlockStatus
+---@return MarkupBlockStatus
+function Apply_Markup(player, path, number, unknown)
+end
+---@public
+---@param player PlayerObject
+function Purge_Goals(player)
+end
+---@public
+---@param player PlayerObject
+---@param goal string
+---@param target GameObject|PlanetObject
+---@param desire_bonus number
+---@param unknown number Possibly goal cycles?
+---@return CommandBlock
+function GiveDesireBonus(player, goal, target, desire_bonus, unknown)
+end
+---@public
+--- Evaluates a perception and returns the result. Player and target are needed if and only if the perception uses Variable_Self and Variable_Target, respectively.
+---@overload fun(perception:string):number
+---@overload fun(perception:string, player:PlayerObject):number
+---@param perception string
+---@param player PlayerObject
+---@param target GameObject|PlayerObject|AITarget
+---@return number
+function EvaluatePerception(perception, player, target)
+end
+---@public
+--- Deprecated but may still work as intended
+---@param player PlayerObject
+---@param target GameObject|PlanetObject
+---@param taskforce TaskForce
+---@return GameObject|PlanetObject
+function _FindStageArea(player, target, taskforce)
+end
+---@public
+--- Deprecated but may still work as intended
+---@param player PlayerObject
+---@return any
+function _ProduceObject(player, type, target)
+end
+
+--- Find a target for a taskforce. Tries to find the one that the perception returns the highest value on.
+---
+---@type fun(taskforce:TaskForce, perception:string, goal_application_flag:string, probability:number, range:number):GameObject|PlanetObject|AITarget
+---@public
+---@overload fun(taskforce:TaskForce, perception:string, goal_application_flag:string, probability:number):GameObject|PlanetObject|AITarget
+---@param taskforce TaskForce
+---@param perception string
+---@param goal_application_flag string
+---@param probability number
+---@param range number
+---@return GameObject|PlanetObject|AITarget
+FindTarget = {}
+
+---@public
+--- Find a target for an aiplayer. Tries to find the one that the perception returns the highest value on.
+---@overload fun(player:PlayerObject, perception:string, goal_application:string, reachability:string, probability:number):GameObject|PlanetObject|AITarget
+---@overload fun(player:PlayerObject, perception:string, goal_application:string, reachability:string, probability:number, target:PlanetObject|GameObject|AITarget):GameObject|PlanetObject|AITarget
+---@param player PlayerObject
+---@param perception string
+---@param goal_application string
+---@param reachability string
+---@param probability number
+---@param target PlanetObject|GameObject|AITarget
+---@param range number
+---@return PlanetObject|GameObject
+function FindTarget.Reachable_Target(player, perception, goal_application, reachability, probability, target, range)
+end
+---@public
+---@param taskforce TaskForce
+---@param list GameObject[]|PlanetObject[]
+---@param perception string
+---@return GameObject|PlanetObject
+function FindTarget.Best_Of(taskforce, list, perception)
+end

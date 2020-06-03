@@ -285,6 +285,403 @@ end
 ---@param callbackFunction function
 function GameObject.Cancel_Event_Object_In_Range(callbackFunction)
 end
+---@public
+--- The returned command block will never finish, even if the move is done and there is no target to be attacked.
+---@overload fun(target:GameObject):CommandBlock
+---@param unit_list GameObject[]
+---@param target GameObject|Position
+---@return CommandBlock
+function GameObject.Attack_Move(unit_list, target)
+end
+---@public
+---@overload fun(target:GameObject):CommandBlock
+---@param unit_list GameObject[]
+---@param target GameObject
+---@return CommandBlock
+function GameObject.Attack_Target(unit_list, target)
+end
+---@public
+---@overload fun(target:GameObject):CommandBlock
+---@param unit_list GameObject[]
+---@param target GameObject|Position
+---@return CommandBlock
+function GameObject.Guard_Target(unit_list, target)
+end
+---@public
+--- Returns true if the unit can currently move (is false e.g. during hyperspace in)
+---@return boolean
+function GameObject.Can_Move()
+end
+---@public
+--- Stops the unit.
+function GameObject.Stop()
+end
+---@public
+--- Movability on or off
+---@param suspend boolean
+function GameObject.Suspend_Locomotor(suspend)
+end
+---@public
+--- Activates targeted ability
+---@param ability_name string 
+---@param turn_on GameObject|Position|boolean A target to turn on targeted abilities or a boolean.
+function GameObject.Activate_Ability(ability_name, turn_on)
+end
+---@public
+--- Finishes ability cooldowns
+function GameObject.Reset_Ability_Counter()
+end
+---@public
+---@param ability_name string 
+---@param autofire boolean
+function GameObject.Set_Single_Ability_Autofire(ability_name, autofire)
+end
+---@public
+---@param autofire boolean
+function GameObject.Set_All_Abilities_Autofire(autofire)
+end
+---@public
+---@param ability_name string 
+---@return boolean
+function GameObject.Is_Ability_Active(ability_name)
+end
+---@public
+---@param ability_name string 
+---@return boolean
+function GameObject.Has_Ability(ability_name)
+end
+---@public
+---@param ability_name string
+---@param optional number
+function GameObject.Force_Ability_Recharge(ability_name, optional)
+end
+---@public
+---@param ability_name string
+function GameObject.Cancel_Ability(ability_name)
+end
+---@public
+---@return boolean
+function GameObject.Are_Engines_Online()
+end
+---@public
+---@param speed number
+function GameObject.Override_Max_Speed(speed)
+end
+---@public
+--- Makes the unit hyperspace into battle with a delay by the given number of frames.
+---@param delay number The number of frames before the hyperspace animation is started
+function GameObject.Cinematic_Hyperspace_In(delay)
+end
+---@public
+--- Makes unit leave into hyperspace. Will be removed from galactic level as well if the optional parameter is not set to false.
+---@param remove_from_campaign boolean Default is true
+function GameObject.Hyperspace_Away(remove_from_campaign)
+end
+---@public
+function GameObject.Cancel_Hyperspace()
+end
+---@public
+--- Allow or prevent AI usage. In tactical battles this crashes the game if the unit has no active AI! When the faction's AI changes, the unit is AI usable again.
+---@param prevent boolean
+function GameObject.Prevent_AI_Usage(prevent)
+end
+---@public
+--- Shall object be displayed in Cinematic?
+---@param keep_visible boolean
+function GameObject.In_End_Cinematic(keep_visible)
+end
+---@public
+---@param target Position|GameObject
+function GameObject.Teleport(target)
+end
+---@public
+--- Teleport object make it face the same way as the target
+---@param target GameObject
+function GameObject.Teleport_And_Face(target)
+end
+---@public
+---@param target Position|GameObject
+function GameObject.Face_Immediate(target)
+end
+---@public
+---@param target Position|GameObject
+function GameObject.Turn_To_Face(target)
+end
+---@public
+--- Prevent automatically firing at targets in range
+---@param prevent boolean
+function GameObject.Prevent_Opportunity_Fire(prevent)
+end
+---@public
+--- Completely prevent a unit from firing
+---@param prevent boolean
+function GameObject.Prevent_All_Fire(prevent)
+end
+---@public
+--- Stops the unit from taking any damage
+---@param invulnerable boolean
+function GameObject.Make_Invulnerable(invulnerable)
+end
+---@public
+---@param check boolean
+function GameObject.Set_Check_Contested_Space(check)
+end
+---@public
+function GameObject.Lock_Current_Orders()
+end
+---@public
+function GameObject.Unlock_Current_Orders()
+end
+---@public
+---@return boolean
+function GameObject.Is_In_Asteroid_Field()
+end
+---@public
+---@return boolean
+function GameObject.Is_In_Ion_Storm()
+end
+---@public
+---@return boolean
+function GameObject.Is_In_Nebula()
+end
+---@public
+---@param enable boolean
+function GameObject.Enable_Dynamic_LOD(enable)
+end
+---@public
+--- Only for fleets with land units in orbit over an enemy planet (is used in FoC campaign but doesn't seem to work)
+function GameObject.Invade()
+end
+---@public
+---@param unknown boolean
+function GameObject.Set_In_Limbo(unknown)
+end
+---@public
+--- Returns a list of the projectile types the unit uses
+---@return GameObjectType[]
+function GameObject.Get_All_Projectile_Types()
+end
+---@public
+---@return boolean
+function GameObject.Is_Selectable()
+end
+---@public
+--- Returns the projectile type the unit is currently using
+---@return GameObjectType
+function GameObject.Get_Current_Projectile_Type()
+end
+---@public
+---@param target GameObject
+---@return boolean
+function GameObject.Is_Good_Against(target)
+end
+---@public
+---@return boolean
+function GameObject.Is_In_Garrison()
+end
+---@public
+--- Returns true if the object contains any garrisoned units
+---@return boolean
+function GameObject.Has_Garrison()
+end
+---@public
+--- Eject all garrisoned units
+function GameObject.Eject_Garrison()
+end
+---@public
+--- Make a garrisoned unit leave its garrison
+function GameObject.Leave_Garrison()
+end
+---@public
+---@return boolean
+function GameObject.Can_Garrison_Fire()
+end
+---@public
+--- Can the unit be garrisoned in the given object?
+---@param target GameObject
+---@return boolean
+function GameObject.Can_Garrison(target)
+end
+---@public
+--- Garrison the unit in the given object
+---@param target GameObject
+function GameObject.Garrison(target)
+end
+---@public
+function GameObject.Play_Cinematic_Engine_Flyby()
+end
+---@public
+---@overload fun(event_name:string)
+---@param event_name string
+---@param optional number
+function GameObject.Stop_SFX_Event(event_name, optional)
+end
+---@public
+---@overload fun(type:string|GameObjectType)
+---@param type string|GameObjectType
+---@param optional string
+---@return GameObject
+function GameObject.Attach_Particle_Effect(type, optional)
+end
+---@public
+---@return boolean
+function GameObject.Has_Attack_Target()
+end
+---@public
+---@param emitter string
+---@param show boolean
+function GameObject.Show_Emitter(emitter, show)
+end
+---@public
+--- Put a small arrow highlight on top of the object
+---@overload fun(highlight:boolean)
+---@param highlight boolean
+---@param optional number Seems to change the distance of the arrow to the object
+function GameObject.Highlight_Small(highlight, optional)
+end
+---@public
+--- Put an arrow highlight on top of the object
+---@overload fun(highlight:boolean)
+---@param highlight boolean
+---@param optional number Seems to change the distance of the arrow to the object
+function GameObject.Highlight(highlight, optional)
+end
+---@public
+---@param target AITarget
+---@return CommandBlock
+function GameObject.Explore_Area(target)
+end
+---@public
+--- Check if a space battle should be initiated, e.g. after spawning a fleet at an enemy planet (only works on fleets and planets)
+function GameObject.Force_Test_Space_Conflict()
+end
+---@public
+--- Keep a unit from dying (it can still be damaged)
+---@param cannot_be_killed boolean
+function GameObject.Set_Cannot_Be_Killed(cannot_be_killed)
+end
+---@public
+--- Returns the hint set for this object in the map editor or nil.
+---@return string|nil
+function GameObject.Get_Hint()
+end
+---@public
+--- Fire death star in tactical mode
+function GameObject.Fire_Tactical_Superweapon()
+end
+---@public
+--- Test if death star is ready to fire
+---@return boolean
+function GameObject.Is_Tactical_Superweapon_Ready()
+end
+---@public
+---@param bone_name string
+---@return Position
+function GameObject.Get_Bone_Position(bone_name)
+end
+---@public
+---@param lock boolean
+function GameObject.Lock_Build_Pad_Contents(lock)
+end
+---@public
+--- Only used on fleets
+---@param number number
+function GameObject.Destroy_Contained_Objects(number)
+end
+---@public
+--- Only used on fleets
+---@param object_type GameObjectType
+---@return boolean
+function GameObject.Contains_Object_Type(object_type)
+end
+---@public
+--- Only used on fleets
+---@return number
+function GameObject.Get_Contained_Object_Count()
+end
+---@public
+--- (tactical only)
+---@param game_object GameObject
+---@return number
+function GameObject.Get_AI_Power_Vs_Unit(game_object)
+end
+---@public
+--- Use in tactical. This kills the corresponding GC object
+function GameObject.Mark_Parent_Mode_Object_For_Death()
+end
+---@public
+---@param number number
+function GameObject.Set_Importance(number)
+end
+---@public
+function GameObject.Service_Wrapper()
+end
+---@public
+--- Possibly only for build pad contents
+function GameObject.Sell()
+end
+---@public
+--- Use on build pads or MDUs
+---@return GameObject
+function GameObject.Get_Build_Pad_Contents()
+end
+---@public
+--- Only for fleets
+---@return GameObject[]
+function GameObject.Get_Contained_Heroes()
+end
+---@public
+--- Only for fleets
+---@return boolean
+function GameObject.Contains_Hero()
+end
+---@public
+--- Use on spawned special weapon or on space station with special weapon
+---@param target GameObject
+---@param user PlayerObject
+function GameObject.Fire_Special_Weapon(target, user)
+end
+---@public
+---@return number
+function GameObject.Get_Rate_Of_Damage_Taken()
+end
+---@public
+--- Expected time til death based on damage taken. 
+---@return number
+function GameObject.Get_Time_Till_Dead()
+end
+---@public
+---@param number number
+function GameObject.Set_Targeting_Stickiness_Time_Threshold(number)
+end
+---@public
+---@param targeting_priority_set string
+function GameObject.Set_Targeting_Priorities(targeting_priority_set)
+end
+---@public
+--- Obeject needs UNIT_AI behavior
+---@param prefer boolean
+function GameObject.Set_Prefer_Ground_Over_Space(prefer)
+end
+---@public
+--- Normalized with respect to unit's total energy
+---@return number Float between 0 and 1
+function GameObject.Get_Energy()
+end
+---@public
+--- Normalized with respect to unit's total health
+---@return number Float between 0 and 1
+function GameObject.Get_Health()
+end
+---@public
+function GameObject.Release()
+end
+---@public
+--- Use on buildpads and MDUs. Takes a UC type
+---@param type string|GameObjectType
+---@param optional boolean
+function GameObject.Build(type, optional)
+end
 
 ---@class Position
 ---Represents a position in the world.
@@ -345,6 +742,35 @@ local PlanetObject = {}
 ---@return boolean
 function PlanetObject.Get_Is_Planet_AI_Usable()
 end
+---@public
+---@return boolean
+function PlanetObject.Is_Corrupted()
+end
+---@public
+--- Check if a space battle should be initiated, e.g. after spawning a fleet at an enemy planet (only works on fleets and planets)
+function PlanetObject.Force_Test_Space_Conflict()
+end
+---@public
+---@return boolean
+function PlanetObject.Is_Planet_Destroyed()
+end
+---@public
+--- Returns the indigenous unit type of that planet affiliated with the given player
+---@return GameObjectType
+function PlanetObject.Get_Affiliated_Indigenous_Type(player)
+end
+---@public
+---@return GameObjectType
+function PlanetObject.Get_Next_Starbase_Type()
+end
+---@public
+---@return PlayerObject
+function PlanetObject.Get_Final_Blow_Player()
+end
+---@public
+---@return number
+function PlanetObject.Get_Starbase_Level()
+end
 
 ---@class GameScoringType
 local GameScoringType = {}
@@ -374,6 +800,19 @@ end
 ---@return boolean
 ---Returns a boolean indicating whether the CommandBlock has finished its command
 function CommandBlock.IsFinished()
+end
+
+---@class AITarget
+local AITarget = {}
+---@public
+--- Returns corresponding game object if there is one (e.g. a targeted unit or planet).
+---@return GameObject
+function AITarget.Get_Game_Object()
+end
+---@public
+---@param position Position
+---@return number
+function AITarget.Get_Distance(position)
 end
 
 --return TaskForce, GameObject, Position, GameObjectType, GameObjectWrapper, PlayerObject, PlanetObject, GameScoringType, CommandBlock

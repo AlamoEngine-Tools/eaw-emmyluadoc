@@ -169,13 +169,17 @@ end
 function GameObject.Get_Shield()
 end
 ---@public
+---@param target GameObject|Position
+---@return number
 function GameObject.Get_Distance(target)
 end
 ---@public
+---@overload fun(target:Position|GameObject|PlanetObject):CommandBlock
+---@param unit_list GameObject[]
 ---@param target Position|GameObject|PlanetObject
 ---@return CommandBlock
 ---Orders the GameObject to move to the given target. Returns a CommandBlock is marked as finished when the GameObject has arrived at target
-function GameObject.Move_To(target)
+function GameObject.Move_To(unit_list, target)
 end
 ---@public
 ---Despawns the GameObject
@@ -214,54 +218,71 @@ end
 function GameObject.Play_Animation(animation_name, should_repeat, animation_index)
 end
 ---@public
+---@param abilityName string
+---@return boolean
 function GameObject.Is_Ability_Autofire(abilityName)
 end
 ---@public
+---@param sfxEventName string
 function GameObject.Play_SFX_Event(sfxEventName)
 end
 ---@public
+---@return boolean
 function GameObject.Is_Transport()
 end
 ---@public
-function GameObject.Get_Planet_Location()
-end
----@public
-function GameObject.Can_Land_On_Planet(planet)
-end
----@public
+---@param planet PlanetObject
+---@return boolean
 function GameObject.Can_Land_On_Planet(planet)
 end
 ---@public
 function GameObject.Get_Game_Scoring_Type()
 end
 ---@public
+---@param abilityName string
+---@return boolean
 function GameObject.Is_Ability_Ready(abilityName)
 end
 ---@public
+---@param position Position|GameObject
 function GameObject.Divert(position)
 end
 ---@public
+---@return boolean
 function GameObject.Is_On_Diversion()
 end
 ---@public
+---@return GameObject[]
 function GameObject.Get_Garrisoned_Units()
 end
 ---@public
+---@param target GameObject
+---@return boolean
 function GameObject.Should_Switch_Weapons(target)
 end
 ---@public
-function GameObject.Set_Garrison_Spawn(boolean)
+---@param allow_spawn boolean
+function GameObject.Set_Garrison_Spawn(allow_spawn)
 end
 ---@public
-function GameObject.Disable_Capture(boolean)
+---@param disable boolean
+function GameObject.Disable_Capture(disable)
 end
 ---@public
-function GameObject.Take_Damage(damageAmount)
+---@overload fun(damageAmount:number)
+---@param damageAmount number
+---@param hardpoint string
+function GameObject.Take_Damage(damageAmount, hardpoint)
 end
 ---@public
-function GameObject.Event_Object_In_Range(callbackFunction, range)
+---@overload fun(callbackFunction:function, range:number)
+---@param callbackFunction fun(obj:GameObject, trigger:GameObject)
+---@param range number
+---@param player PlayerObject
+function GameObject.Event_Object_In_Range(callbackFunction, range, player)
 end
 ---@public
+---@param callbackFunction function
 function GameObject.Cancel_Event_Object_In_Range(callbackFunction)
 end
 
@@ -321,18 +342,22 @@ end
 ---@class PlanetObject
 local PlanetObject = {}
 ---@public
+---@return boolean
 function PlanetObject.Get_Is_Planet_AI_Usable()
 end
 
 ---@class GameScoringType
 local GameScoringType = {}
 ---@public
+---@return number
 function GameScoringType.Get_Score_Cost_Credits()
 end
 ---@public
+---@return number
 function GameScoringType.Get_Combat_Rating()
 end
 ---@public
+---@return number
 function GameScoringType.Get_Build_Cost()
 end
 

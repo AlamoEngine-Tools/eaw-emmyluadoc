@@ -1103,3 +1103,31 @@ end
 ---@return GameObject|PlanetObject
 function FindTarget.Best_Of(taskforce, list, perception)
 end
+
+
+FreeStore = {}
+
+---@public
+---@param game_object GameObject
+---@return boolean
+function FreeStore.Is_Object_On_Free_Store(game_object)
+end
+---@public
+---@return number
+function FreeStore.Get_Object_Count()
+end
+---@public
+---@param game_object GameObject
+---@return boolean
+function FreeStore.Is_Unit_Safe(game_object)
+end
+---@public
+---@param game_object GameObject
+---@return boolean
+function FreeStore.Is_Unit_In_Transit(game_object)
+end
+---@public
+---@param game_object GameObject
+---@param planet PlanetObject
+function FreeStore.Move_Object(game_object, planet)
+end

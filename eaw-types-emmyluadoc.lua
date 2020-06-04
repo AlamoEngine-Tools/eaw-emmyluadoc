@@ -696,10 +696,72 @@ local GameObjectType = {}
 function GameObjectType.Get_Name()
 end
 ---@public
+---@return boolean
 function GameObjectType.Is_Hero()
 end
 ---@public
+---@return number
 function GameObjectType.Get_Build_Cost()
+end
+---@public
+--- Returns the AI_Combat_Power
+---@return number
+function GameObjectType.Get_Combat_Rating()
+end
+---@public
+--- Returns required tech level
+---@return number
+function GameObjectType.Get_Tech_Level()
+end
+---@public
+--- Returns level of a starbase type
+---@return number
+function GameObjectType.Get_Base_Level()
+end
+---@public
+---@param player PlayerObject
+---@return boolean
+function GameObjectType.Is_Affiliated_With(player)
+end
+---@public
+---@param player PlayerObject
+---@return boolean
+function GameObjectType.Is_Build_Locked(player)
+end
+---@public
+---@param player PlayerObject
+---@return boolean
+function GameObjectType.Is_Obsolete(player)
+end
+---@public
+---@return number
+function GameObjectType.Get_Tactical_Build_Cost()
+end
+---@public
+---@return number
+function GameObjectType.Get_Score_Cost_Credits()
+end
+---@public
+---@return number
+function GameObjectType.Get_Max_Range()
+end
+---@public
+---@return number
+function GameObjectType.Get_Min_Range()
+end
+---@public
+---@return number
+function GameObjectType.Get_Bribe_Cost()
+end
+---@public
+--- This only makes sense for projectile types though it can be used for others as well.
+---@return boolean
+function GameObjectType.Is_Affected_By_Missile_Shield()
+end
+---@public
+--- This only makes sense for projectile types though it can be used for others as well.
+---@return boolean
+function GameObjectType.Is_Affected_By_Laser_Defense()
 end
 
 ---@class GameObjectWrapper
@@ -730,10 +792,127 @@ end
 function PlayerObject.Give_Money(amount)
 end
 ---@public
+---@return number
 function PlayerObject.Get_ID()
 end
 ---@public
+---@param playerObject PlayerObject
+---@return boolean
 function PlayerObject.Is_Ally(playerObject)
+end
+---@public
+--- Enables Advisor Hints
+---@param mode string Is "space" or "ground"
+---@param enable boolean
+function PlayerObject.Enable_Advisor_Hints(mode, enable)
+end
+---@public
+--- Returns an enemy player (may only ever returns Rebel or Empire, in any case there is not much point using it outside the base EaW though it might be related to the Primary Enemy tag)
+---@return PlayerObject
+function PlayerObject.Get_Enemy()
+end
+---@public
+--- Forces player to select object
+---@param object GameObject
+function PlayerObject.Select_Object(object)
+end
+---@public
+--- Activates the AI for the player
+function PlayerObject.Enable_As_Actor()
+end
+---@public
+--- Enables retreat event. Returns false if player is not able to retreat.
+---@return boolean
+function PlayerObject.Retreat()
+end
+---@public
+--- returns the displayed faction name
+---@return string
+function PlayerObject.Get_Name()
+end
+---@public
+--- Returns xml faction name
+---@return string
+function PlayerObject.Get_Faction_Name()
+end
+---@public
+---@return number
+function PlayerObject.Get_Tech_Level()
+end
+---@public
+function PlayerObject.Give_Random_Sliceable_Tech()
+end
+---@public
+--- Gets reset with any game mode changes, in particular at the end of every tactical battle!
+---@param player PlayerObject
+function PlayerObject.Make_Ally(player)
+end
+---@public
+--- Gets reset with any game mode changes, in particular at the end of every tactical battle!
+---@param player PlayerObject
+function PlayerObject.Make_Enemy(player)
+end
+---@public
+--- Returns the player's space station in space tactical
+---@return GameObject
+function PlayerObject.Get_Space_Station()
+end
+---@public
+--- Team ID in skirmish
+---@return number
+function PlayerObject.Get_Team()
+end
+---@public
+--- Clan ID in skirmish
+---@return number
+function PlayerObject.Get_Clan_ID()
+end
+---@public
+--- Removes the orbital bombardment. Countdown for usage will continue and not be reset if the bombardment is re-enabled.
+---@param remove boolean
+function PlayerObject.Remove_Orbital_Bombardment(remove)
+end
+---@public
+--- Disable the bombardment. The countdown for usage will continue.
+---@param disable boolean
+function PlayerObject.Disable_Orbital_Bombardment(disable)
+end
+---@public
+---@param set boolean
+function PlayerObject.Set_Sabotage_Tutorial(set)
+end
+---@public
+---@param set boolean
+function PlayerObject.Set_Black_Market_Tutorial(set)
+end
+---@public
+---@return string Returns "Easy", "Normal" or "Hard"
+function PlayerObject.Get_Difficulty()
+end
+---@public
+--- The parameter logic is reversed here. The bombing run is disabled if false is passed.
+---@param enable boolean
+function PlayerObject.Disable_Bombing_Run(enable)
+end
+---@public
+---@param object_type GameObjectType
+function PlayerObject.Unlock_Tech(object_type)
+end
+---@public
+function PlayerObject.Get_GameSpy_Stats_Player_ID()
+end
+---@public
+---@return number
+function PlayerObject.Get_Credits()
+end
+---@public
+--- For AI player (with galactic AI) only. Releases credits for spending in tactical mode.
+---@param amount number
+function PlayerObject.Release_Credits_For_Tactical(amount)
+end
+---@public
+---@param level number
+function PlayerObject.Set_Tech_Level(level)
 end
 
 ---@class PlanetObject

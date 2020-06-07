@@ -546,3 +546,588 @@ end
 ---@return CommandBlock
 function Play_Lightning_Effect(effect, position1, position2)
 end
+
+
+-- -------------------------------------------------------------------------
+-- ------------------------ Miscellaneous Functions ------------------------
+-- -------------------------------------------------------------------------
+
+--- Used to run event handlers like `Default_Space_Conflict_Begin`. Returns an event handler function to be called or nil.
+---
+---@type function|table
+---@public
+---@return function|nil
+GetEvent = {}
+
+---@public
+--- Returns a list with parameters for the function call returned by GetEvent()
+---@return table
+function GetEvent.Params()
+end
+
+---@public
+--- Clear out any thread events
+function GetEvent.Reset()
+end
+
+---@public
+--- Returns the call stacks for all threads of this lua script.
+---@return string
+function DumpCallStack()
+end
+
+---@public
+--- Seems to be equivalent to Thread.Get_Current_ID()
+---@return number The current thread ID, an integer
+function GetThreadID()
+end
+
+---@public
+--- Prints to _LogFile.txt. Contains a spelling mistake.
+---@param out_string string
+function _OuputDebug(out_string)
+end
+
+---@public
+--- Trigger a message popup window
+---@param out_string string
+function _MessagePopup(out_string)
+end
+
+---@public
+--- Print to the given file.
+---@param file_name string Just a filename, no path
+---@param out_string string
+function _CustomScriptMessage(file_name, out_string)
+end
+
+---@public
+--- Prints to the AILog if it is enabled
+---@param out_string string
+function _ScriptMessage(out_string)
+end
+
+---@public
+--- Sets a flag for the engine to terminate the script. The script will not be killed immediately, only after the next yield.
+function _ScriptExit()
+end
+
+---@public
+---@param string1 string
+---@param string2 string
+---@return boolean
+function StringCompare(string1, string2)
+end
+
+---@public
+--- Is this a multiplayer game?
+---@return boolean
+function Is_Multiplayer_Mode()
+end
+
+---@public
+--- Returns "Land", "Space" or "Galactic"
+---@return string
+function Get_Game_Mode()
+end
+
+---@public
+--- True for GC games
+---@return boolean
+function Is_Campaign_Game()
+end
+
+---@public
+--- (Un)Lock all player controls
+---@param lock number Integer to denote true(1) or false(0)
+function Lock_Controls(lock)
+end
+
+---@public
+--- Disable or enable all AIs
+---@param suspend number Integer to denote true(1) or false(0)
+function Suspend_AI(suspend)
+end
+
+---@public
+--- Stops fast forward
+function Cancel_Fast_Forward()
+end
+
+---@public
+--- In tactical missions when reward parameter 9 of LINK_TACTICAL is set to 2, this will trigger the arrival of the attacking fleet. Should be called before the player is given control.
+function Resume_Hyperspace_In()
+end
+
+---@public
+--- Displays the text entry as a droid advisor hint
+---@param text_string string Text identifier from dat file
+function Game_Message(text_string)
+end
+
+---@public
+--- For info_section == true the objective is added under the heading "Battle Information", otherwise it is added under the heading "Mission Objectives"
+---@param text_string string Text identifier from dat file
+---@param info_section boolean Add objective as "Battle Information" or as "Mission Objective"
+function Add_Objective(text_string, info_section)
+end
+
+---@public
+---@param identifier string
+function Remove_Planet_Highlight(identifier)
+end
+
+---@public
+---@param planet GameObject
+---@param identifier string
+function Add_Planet_Highlight(planet, identifier)
+end
+
+---@public
+--- Removes the radar blip identified by the given string.
+---@param identifier string
+function Remove_Radar_Blip(identifier)
+end
+
+---@public
+--- Add a radar blip on the given object with an identifier for removal.
+---@param game_object GameObject
+---@param identifier string
+function Add_Radar_Blip(game_object, identifier)
+end
+
+---@public
+---@param object GameObject
+---@param hide number
+---@param sub_object_name string
+function Hide_Sub_Object(object, hide, sub_object_name)
+end
+
+---@public
+---@param object GameObject
+---@param hide number
+function Hide_Object(object, hide)
+end
+
+---@public
+--- Assembles the passed objects into a fleet and returns the fleet object.
+---@param object_list GameObject[]
+---@return GameObject
+function Assemble_Fleet(object_list)
+end
+
+---@public
+---@param position GameObject|Position
+---@return boolean
+function Is_Point_In_Asteroid_Field(position)
+end
+
+---@public
+---@param position GameObject|Position
+---@return boolean
+function Is_Point_In_Ion_Storm(position)
+end
+
+---@public
+---@param position GameObject|Position
+---@return boolean
+function Is_Point_In_Nebula(position)
+end
+
+---@public
+--- Only valid in land mode.
+---@overload fun(position1, position2):boolean
+---@param position1 position
+---@param position2  position
+---@param player PlayerObject
+---@param unknown boolean
+---@return boolean
+function Are_On_Opposite_Sides_Of_Shield(position1, position2, player, unknown)
+end
+
+---@public
+--- Triggers the retry dialog that allows the player to restart the mission or quit.
+function Activate_Retry_Dialog()
+end
+
+---@public
+---@param planet PlanetObject
+---@param level number
+---@return CommandBlock
+function WaitForStarbase(planet, level)
+end
+
+---@public
+---@param planet PlanetObject
+---@param level number
+---@return CommandBlock
+function WaitForGroundbase(planet, level)
+end
+
+---@public
+---@param planet PlanetObject
+---@return GameObjectType
+function GetNextGroundbaseType(planet)
+end
+
+---@public
+---@param planet PlanetObject
+---@return GameObjectType
+function GetNextStarbaseType(planet)
+end
+
+-- ----------------------------------------------------------------
+-- ------------------------ Multithreading ------------------------
+-- ----------------------------------------------------------------
+
+---@public
+--- Starts the given function in a new thread on the next frame with the given parameter and returns the thread ID (an integer). If the parameter is a table, its contents will be copied into a new list which is given to the function, the keys of the original table will be lost.
+---@param function_name string
+---@param parameter any
+---@return number Thread ID
+function Create_Thread(function_name, parameter)
+end
+
+
+Thread = {}
+
+---@public
+--- Starts the given function in a new thread on the next frame with the given parameter and returns the thread ID (an integer). If the parameter is a table, its contents will be copied into a new list which is given to the function, the keys of the original table will be lost.
+---@param function_name string
+---@param parameter any
+---@return number Thread ID
+function Thread.Create(function_name, parameter)
+end
+
+---@public
+--- Stops the thread with the given ID
+---@param thread_id number
+function Thread.Kill(thread_id)
+end
+
+---@public
+function Thread.Kill_All()
+end
+
+---@public
+---@param thread_id number
+function Thread.Is_Thread_Active(thread_id)
+end
+
+---@public
+--- Returns the name of the main function ("main" or the function name passed to Create_Thread).
+---@param thread_id number
+function Thread.Get_Name(thread_id)
+end
+
+---@public
+--- Returns the ID of the current thread.
+function Thread.Get_Current_ID()
+end
+
+
+-- --------------------------------------------------------
+-- ------------------------ Values ------------------------
+-- --------------------------------------------------------
+
+GlobalValue = {}
+
+---@public
+--- Get the value for the given name.
+---@param name string
+---@return any
+function GlobalValue.Get(name)
+end
+
+---@public
+--- Set a value for the given name. This value is accessible for all lua scripts and can be any variable type except userdata or thread. Can theoretically still be used to access userdata from other scripts, however the game throws an error in that case.
+---@param name string
+---@param value any
+function GlobalValue.Set(name, value)
+end
+
+--- Get the value set for the given name. Can be indexed for further functions.
+---
+---@type fun(name:string):any
+---@public
+---@param name string
+---@return any
+ThreadValue = {}
+
+---@public
+--- Get the value set for the given name.
+---@param name string
+---@return any
+function ThreadValue.Get(name)
+end
+
+---@public
+--- Set a value for the given identifier. This value is specific to a thread as defined by Create_Thread.
+---@param name string
+---@param value any
+function ThreadValue.Set(name, value)
+end
+
+---@public
+--- Sets value for the given name to nil.
+---@param name string
+function ThreadValue.Reset(name)
+end
+
+
+-- ------------------------------------------------------------
+-- ------------------------ Fog of War ------------------------
+-- ------------------------------------------------------------
+
+FogOfWar = {}
+
+---@public
+--- Reveals the entire map for a player. Can be undone using the return value.
+---@param player PlayerObject
+---@return FowRevealClass
+function FogOfWar.Reveal_All(player)
+end
+
+---@public
+--- Reveals FoW in a radius aroung the given position for a player. The return value can be used to undo the reveal.
+---@param player PlayerObject
+---@param position Position
+---@param radius number
+---@return FowRevealClass
+function FogOfWar.Reveal(player, position, radius)
+end
+
+---@public
+--- Reveals FoW in a radius aroung the given position for a player for about 5 seconds.
+---@param player PlayerObject
+---@param position Position
+---@param radius number
+function FogOfWar.Temporary_Reveal(player, position, radius)
+end
+
+---@public
+---@param disable boolean
+function FogOfWar.Disable_Rendering(disable)
+end
+
+---@class FowRevealClass
+local FowRevealClass = {}
+
+---@public
+--- Undo a reveal.
+function FowRevealClass.Undo_Reveal()
+end
+
+-- ---------------------------------------------------------------------
+-- ------------------------ Story functionality ------------------------
+-- ---------------------------------------------------------------------
+
+---@public
+--- Trigger a STORY_AI_NOTIFICATION event with the given identifier.
+---@overload fun(identifier:string)
+---@param identifier string
+---@param unknownArgument GameObject
+function Story_Event(identifier, unknownArgument)
+end
+
+---@public
+--- Checks if corresponding reward type TRIGGER_AI has fired.
+---@param player PlayerObject
+---@param identifier string
+---@param gameObject GameObject|nil
+---@param bool boolean
+---@return boolean
+function Check_Story_Flag(player, identifier, gameObject, bool)
+end
+
+---@public
+--- Returns the story file as StoryPlotWrapper object. The parameter is case sensitive.
+---@param file_name string 
+---@return StoryPlotWrapper
+function Get_Story_Plot(file_name)
+end
+
+---@class StoryPlotWrapper
+local StoryPlotWrapper = {}
+
+---@public
+--- Finds an Xml event from the plot and returns it.
+---@param event_name string
+---@return StoryEventWrapper
+function StoryPlotWrapper.Get_Event(event_name)
+end
+
+---@public
+--- Suspends the plot.
+function StoryPlotWrapper.Suspend()
+end
+
+---@public
+--- Activates the plot
+function StoryPlotWrapper.Activate()
+end
+
+---@public
+--- Resets all events of the plot.
+function StoryPlotWrapper.Reset()
+end
+
+---@class StoryEventWrapper
+local StoryEventWrapper = {}
+
+---@public
+--- Sets the event's reward type.
+---@param reward_type string
+function StoryEventWrapper.Set_Reward_Type(reward_type)
+end
+
+---@public
+--- Sets a reward parameter. The index starts counting at zero which corresponds to <Reward_Param1>.
+---@param parameter_index number
+---@param value any
+function StoryEventWrapper.Set_Reward_Parameter(parameter_index, value)
+end
+
+---@public
+--- Sets an event parameter. The index starts counting at zero which corresponds to <Event_Param1>.
+---@param parameter_index number
+---@param value any
+function StoryEventWrapper.Set_Event_Parameter(parameter_index, value)
+end
+
+---@public
+--- Sets the dialog file.
+---@param dialog_file_name string
+function StoryEventWrapper.Set_Dialog(dialog_file_name)
+end
+
+---@public
+function StoryEventWrapper.Clear_Dialog_Text()
+end
+
+---@public
+--- The text will be formatted with any additional parameters given.
+---@param text_identifier string
+function StoryEventWrapper.Add_Dialog_Text(text_identifier, ...)
+end
+
+-- ----------------------------------------------------------------------
+-- ------------------------ AI related functions ------------------------
+-- ----------------------------------------------------------------------
+
+---@class MarkupBlockStatus
+
+---@public
+--- For tactical battle. Evaluates the perception at GC level.
+---@param perception string
+---@return number
+function Evaluate_In_Galactic_Context(perception)
+end
+---@public
+---@param player PlayerObject
+---@param path PlanetObject[]
+---@param number number
+---@param unknown MarkupBlockStatus
+---@return MarkupBlockStatus
+function Apply_Markup(player, path, number, unknown)
+end
+---@public
+---@param player PlayerObject
+function Purge_Goals(player)
+end
+---@public
+---@param player PlayerObject
+---@param goal string
+---@param target GameObject|PlanetObject
+---@param desire_bonus number
+---@param unknown number Possibly goal cycles?
+---@return CommandBlock
+function GiveDesireBonus(player, goal, target, desire_bonus, unknown)
+end
+---@public
+--- Evaluates a perception and returns the result. Player and target are needed if and only if the perception uses Variable_Self and Variable_Target, respectively.
+---@overload fun(perception:string):number
+---@overload fun(perception:string, player:PlayerObject):number
+---@param perception string
+---@param player PlayerObject
+---@param target GameObject|PlayerObject|AITarget
+---@return number
+function EvaluatePerception(perception, player, target)
+end
+---@public
+--- Deprecated but may still work as intended
+---@param player PlayerObject
+---@param target GameObject|PlanetObject
+---@param taskforce TaskForce
+---@return GameObject|PlanetObject
+function _FindStageArea(player, target, taskforce)
+end
+---@public
+--- Deprecated but may still work as intended
+---@param player PlayerObject
+---@return any
+function _ProduceObject(player, type, target)
+end
+
+--- Find a target for a taskforce. Tries to find the one that the perception returns the highest value on.
+---
+---@type fun(taskforce:TaskForce, perception:string, goal_application_flag:string, probability:number, range:number):GameObject|PlanetObject|AITarget
+---@public
+---@overload fun(taskforce:TaskForce, perception:string, goal_application_flag:string, probability:number):GameObject|PlanetObject|AITarget
+---@param taskforce TaskForce
+---@param perception string
+---@param goal_application_flag string
+---@param probability number
+---@param range number
+---@return GameObject|PlanetObject|AITarget
+FindTarget = {}
+
+---@public
+--- Find a target for an aiplayer. Tries to find the one that the perception returns the highest value on.
+---@overload fun(player:PlayerObject, perception:string, goal_application:string, reachability:string, probability:number):GameObject|PlanetObject|AITarget
+---@overload fun(player:PlayerObject, perception:string, goal_application:string, reachability:string, probability:number, target:PlanetObject|GameObject|AITarget):GameObject|PlanetObject|AITarget
+---@param player PlayerObject
+---@param perception string
+---@param goal_application string
+---@param reachability string
+---@param probability number
+---@param target PlanetObject|GameObject|AITarget
+---@param range number
+---@return PlanetObject|GameObject
+function FindTarget.Reachable_Target(player, perception, goal_application, reachability, probability, target, range)
+end
+---@public
+---@param taskforce TaskForce
+---@param list GameObject[]|PlanetObject[]
+---@param perception string
+---@return GameObject|PlanetObject
+function FindTarget.Best_Of(taskforce, list, perception)
+end
+
+
+FreeStore = {}
+
+---@public
+---@param game_object GameObject
+---@return boolean
+function FreeStore.Is_Object_On_Free_Store(game_object)
+end
+---@public
+---@return number
+function FreeStore.Get_Object_Count()
+end
+---@public
+---@param game_object GameObject
+---@return boolean
+function FreeStore.Is_Unit_Safe(game_object)
+end
+---@public
+---@param game_object GameObject
+---@return boolean
+function FreeStore.Is_Unit_In_Transit(game_object)
+end
+---@public
+---@param game_object GameObject
+---@param planet PlanetObject
+function FreeStore.Move_Object(game_object, planet)
+end

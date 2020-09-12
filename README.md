@@ -18,3 +18,11 @@ For use in your mod you then drop the file `eaw-emmyluadoc.lua` into the `mymod/
 EmmyLua should automatically pick it up and apply the hints.
 
 > ⚠️ **NOTE**: For VSCode a [LUA Language Server](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) supporting EmmyLua annotations has been released. We encourage everyone try this LSP implementation instead of EmmyLua - it provides even more accurate support.
+
+## Contributing
+
+To contribute additional documentation, follow the set guidelines:
+
+- `eaw-types-emmyluadoc.lua` contains the documentation for all types (aka classes) that are exposed to the LUA sandbox by the game's C++ code or are otherwise wrapping types.
+- `eaw-functions-emmyluadoc.lua` contains all functions that are otherwise exposed to the LUA sandbox, but are not a member function of a type.
+- `eaw-pglib-${LIBRARY_NAME}-emmyluadoc.lua` contain documentation for all library files.
